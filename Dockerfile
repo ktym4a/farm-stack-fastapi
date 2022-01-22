@@ -1,12 +1,12 @@
-FROM python:3.10-alpine
+FROM python:3.10-slim
 
 WORKDIR /app
 
 COPY requirements.txt .
 
-RUN apk add --no-cache build-base \
- && pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt \
- && apk del build-base
+# RUN apk update && apk add python3-dev gcc libc-dev
+
+RUN pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.txt
 
 COPY main.py .
 EXPOSE 8000
