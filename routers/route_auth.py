@@ -16,7 +16,7 @@ def get_csrf_token(csrf_protect: CsrfProtect = Depends()):
     return res
 
 
-@router.post("/api/gesister", response_model=UserInfo)
+@router.post("/api/register", response_model=UserInfo)
 async def signup(request: Request, user: UserBody,
                  csrf_protect: CsrfProtect = Depends()):
     csrf_token = csrf_protect.get_csrf_from_headers(request.headers)
